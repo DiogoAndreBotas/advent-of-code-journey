@@ -25,17 +25,30 @@ public class SonarSweep {
     }
 
     public int calculateDepthIncreases() {
-        List<String> lines = sonarSweeps.collect(Collectors.toList());
+        List<Integer> measurements = sonarSweeps.map(Integer::parseInt).collect(Collectors.toList());
         int measurementIncreases = 0;
 
-        for (int i = 0; i < lines.size() - 1; i++) {
-            int currMeasurement = Integer.parseInt(lines.get(i));
-            int nextMeasurement = Integer.parseInt(lines.get(i + 1));
-
-            if (nextMeasurement > currMeasurement)
+        for (int i = 0; i < measurements.size() - 1; i++) {
+            if (measurements.get(i + 1) > measurements.get(i))
                 measurementIncreases++;
         }
 
         return measurementIncreases;
     }
+
+    public int calculateSlidingWindowIncreases() {
+        List<Integer> measurements = sonarSweeps.map(Integer::parseInt).collect(Collectors.toList());
+        int slidingWindowIncreases = 0;
+
+        for (int i = 0; i < measurements.size() - 3; i++) {
+            int currSlidingWindow = measurements.get(i) + measurements.get(i + 1) + measurements.get(i + 2);
+            int nextSlidingWindow = measurements.get(i + 1) + measurements.get(i + 2) + measurements.get(i + 3);
+
+            if (nextSlidingWindow > currSlidingWindow)
+                slidingWindowIncreases++;
+        }
+
+        return slidingWindowIncreases;
+    }
+
 }

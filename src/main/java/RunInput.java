@@ -8,7 +8,7 @@ public class RunInput {
     public static void main(String[] args) {
         File file = new File("./src/main/resources/twentytwentyone/input.txt");
         SonarSweep sonarSweep = new SonarSweep(file);
-        System.out.println(sonarSweep.calculateDepthIncreases());
+        System.out.println(sonarSweep.calculateSlidingWindowIncreases());
     }
 
 }
