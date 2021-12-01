@@ -11,22 +11,20 @@ import java.util.stream.Stream;
 
 public class TextFileParser {
 
-    public static ArrayList<String> parse(File file) throws FileExtensionNotSupportedException, FileNotFoundException {
+    public static Stream<String> parse(File file) throws FileNotFoundException, FileExtensionNotSupportedException {
         if (!file.exists())
             throw new FileNotFoundException();
 
         String fileName = file.getName();
         String fileExtension = fileName.substring(fileName.length() - 3);
 
-        System.out.println("file extension " + fileExtension);
-
         if (!fileExtension.equals("txt"))
             throw new FileExtensionNotSupportedException("");
 
-        ArrayList<String> lines = new ArrayList<>();
+        Stream<String> lines = Stream.empty();
 
-        try (Stream<String> linesStream = Files.lines(file.toPath())) {
-            linesStream.forEach(lines::add);
+        try {
+            lines = Files.lines(file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
         }
