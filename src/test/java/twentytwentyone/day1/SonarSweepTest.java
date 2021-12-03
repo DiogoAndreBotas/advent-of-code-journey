@@ -1,16 +1,11 @@
 package twentytwentyone.day1;
 
-import exception.FileExtensionNotSupportedException;
-import helper.TextFileParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 public class SonarSweepTest {
 
@@ -51,7 +46,7 @@ public class SonarSweepTest {
     }
 
     @Test
-    @DisplayName("calculateDepthIncreases - Sonar Sweep has several depth measurements and no increases")
+    @DisplayName("calculateSlidingWindowIncreases - Sonar Sweep has several sliding window increases and no increases")
     public void slidingWindowsWithNoIncreases() {
         File file = new File("./src/test/resources/twentytwentyone/day1/sliding_windows_with_no_increases.txt");
         SonarSweep sonarSweep = new SonarSweep(file);
@@ -60,7 +55,7 @@ public class SonarSweepTest {
     }
 
     @Test
-    @DisplayName("calculateDepthIncreases - Sonar Sweep has several depth measurements and they are all increases")
+    @DisplayName("calculateSlidingWindowIncreases - Sonar Sweep has several sliding window increases and they are all increases")
     public void slidingWindowsOnlyWithIncreases() {
         File file = new File("./src/test/resources/twentytwentyone/day1/sliding_windows_only_with_increases.txt");
         SonarSweep sonarSweep = new SonarSweep(file);
@@ -69,7 +64,7 @@ public class SonarSweepTest {
     }
 
     @Test
-    @DisplayName("calculateDepthIncreases - Sonar Sweep has several depth measurements and mixed increases")
+    @DisplayName("calculateSlidingWindowIncreases - Sonar Sweep has several sliding window increases and mixed increases")
     public void slidingWindowsWithMixedIncreases() {
         File file = new File("./src/test/resources/twentytwentyone/day1/sliding_windows_with_mixed_increases.txt");
         SonarSweep sonarSweep = new SonarSweep(file);
