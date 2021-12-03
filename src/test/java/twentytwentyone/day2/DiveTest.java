@@ -40,12 +40,47 @@ public class DiveTest {
     }
 
     @Test
-    @DisplayName("multiplyHorizontalPositionByDepth - commands contains different numbers")
+    @DisplayName("multiplyHorizontalPositionByDepth - one command is invalid")
     public void multiplyCommandsWithInvalidCommand() {
         File file = new File("./src/test/resources/twentytwentyone/day2/multiply_commands_invalid_command.txt");
         Dive dive = new Dive(file);
 
         assertThrows(InvalidCommandException.class, dive::multiplyHorizontalPositionByDepth);
+    }
+
+    @Test
+    @DisplayName("multiplyHorizontalPositionByDepthWithAim - commands only contain values equivalent to zero")
+    public void multiplyCommandsWithAimAndWithZeroValues() {
+        File file = new File("./src/test/resources/twentytwentyone/day2/multiply_commands_zero.txt");
+        Dive dive = new Dive(file);
+
+        try {
+            assertEquals(0, dive.multiplyHorizontalPositionByDepthWithAim());
+        } catch (InvalidCommandException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    @DisplayName("multiplyHorizontalPositionByDepthWithAim - commands contains different numbers")
+    public void multiplyCommandsWithAimAndWithMixedValues() {
+        File file = new File("./src/test/resources/twentytwentyone/day2/multiply_commands_mixed_values.txt");
+        Dive dive = new Dive(file);
+
+        try {
+            assertEquals(900, dive.multiplyHorizontalPositionByDepthWithAim());
+        } catch (InvalidCommandException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    @DisplayName("multiplyHorizontalPositionByDepthWithAim - commands contains different numbers")
+    public void multiplyCommandsWithAimAndWithInvalidCommand() {
+        File file = new File("./src/test/resources/twentytwentyone/day2/multiply_commands_invalid_command.txt");
+        Dive dive = new Dive(file);
+
+        assertThrows(InvalidCommandException.class, dive::multiplyHorizontalPositionByDepthWithAim);
     }
 
 }

@@ -12,7 +12,7 @@ public class RunInput {
         Dive dive = new Dive(file);
 
         try {
-            System.out.println(dive.multiplyHorizontalPositionByDepth());
+            System.out.println(dive.multiplyHorizontalPositionByDepthWithAim());
         } catch (InvalidCommandException e) {
             e.printStackTrace();
         }

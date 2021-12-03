@@ -30,10 +30,31 @@ public class Dive {
         List<String[]> splitCommands = commands.map(command -> command.split(" ")).collect(Collectors.toList());
 
         for (String[] splitCommand: splitCommands) {
+            int value = Integer.parseInt(splitCommand[1]);
             switch (splitCommand[0]) {
-                case "forward" -> horizontalPosition += Integer.parseInt(splitCommand[1]);
-                case "down" -> depth += Integer.parseInt(splitCommand[1]);
-                case "up" -> depth -= Integer.parseInt(splitCommand[1]);
+                case "forward" -> horizontalPosition += value;
+                case "down" -> depth += value;
+                case "up" -> depth -= value;
+                default -> throw new InvalidCommandException(splitCommand[0]);
+            }
+        }
+
+        return horizontalPosition * depth;
+    }
+
+    public int multiplyHorizontalPositionByDepthWithAim() throws InvalidCommandException {
+        int horizontalPosition = 0, depth = 0, aim = 0;
+        List<String[]> splitCommands = commands.map(command -> command.split(" ")).collect(Collectors.toList());
+
+        for (String[] splitCommand: splitCommands) {
+            int value = Integer.parseInt(splitCommand[1]);
+            switch (splitCommand[0]) {
+                case "forward" -> {
+                    horizontalPosition += value;
+                    depth += value * aim;
+                }
+                case "down" -> aim += value;
+                case "up" -> aim -= value;
                 default -> throw new InvalidCommandException(splitCommand[0]);
             }
         }
