@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DiveTest {
-    private final Logger logger = Logger.getLogger("2021 - Day 2 - Dive");
 
     @Test
     @DisplayName("multiplyHorizontalPositionByDepth - commands only contain values equivalent to zero")
