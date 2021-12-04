@@ -32,4 +32,8 @@ public class TextFileParser {
         return lines;
     }
 
+    public static Stream<Integer> parseAsInt(File file) throws FileNotFoundException, FileExtensionNotSupportedException {
+        return parse(file).map(Integer::parseInt);
+    }
+
 }

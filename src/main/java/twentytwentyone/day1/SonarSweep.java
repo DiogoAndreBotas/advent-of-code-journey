@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SonarSweep {
-    private Stream<String> sonarSweeps;
+    private Stream<Integer> sonarSweeps;
     private final Logger logger = Logger.getLogger("2021 - Day 1 - Sonar Sweep");
 
     public SonarSweep(File file) {
         try {
-            sonarSweeps = TextFileParser.parse(file);
+            sonarSweeps = TextFileParser.parseAsInt(file);
         } catch (FileExtensionNotSupportedException exception) {
             logger.severe("File extension is not supported");
         } catch (FileNotFoundException exception) {
@@ -25,28 +25,22 @@ public class SonarSweep {
     }
 
     public int calculateDepthIncreases() {
-        List<Integer> measurements = sonarSweeps.map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> measurements = sonarSweeps.collect(Collectors.toList());
         int measurementIncreases = 0;
 
-        for (int i = 0; i < measurements.size() - 1; i++) {
+        for (int i = 0; i < measurements.size() - 1; i++)
             if (measurements.get(i + 1) > measurements.get(i))
                 measurementIncreases++;
-        }
 
         return measurementIncreases;
     }
 
     public int calculateSlidingWindowIncreases() {
-        List<Integer> measurements = sonarSweeps.map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> measurements = sonarSweeps.collect(Collectors.toList());
         int slidingWindowIncreases = 0;
 
-        for (int i = 0; i < measurements.size() - 3; i++) {
-            int currSlidingWindow = measurements.get(i) + measurements.get(i + 1) + measurements.get(i + 2);
-            int nextSlidingWindow = measurements.get(i + 1) + measurements.get(i + 2) + measurements.get(i + 3);
-
-            if (nextSlidingWindow > currSlidingWindow)
-                slidingWindowIncreases++;
-        }
+        for (int i = 0; i < measurements.size() - 3; i++)
+            slidingWindowIncreases += (measurements.get(i + 3) > measurements.get(i)) ? 1 : 0;
 
         return slidingWindowIncreases;
     }
