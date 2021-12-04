@@ -1,7 +1,4 @@
-import exception.InvalidCommandException;
-import twentytwentyone.day1.SonarSweep;
-import twentytwentyone.day2.Dive;
-import twentytwentyone.day3.BinaryDiagnostic;
+import twentytwentyone.day4.GiantSquid;
 
 import java.io.File;
 
@@ -9,10 +6,10 @@ public class RunInput {
 
     // Get answers to challenges here :muscle:
     public static void main(String[] args) {
-        File file = new File("./src/main/resources/twentytwentyone/day3/input.txt");
-        BinaryDiagnostic binaryDiagnostic = new BinaryDiagnostic(file);
+        File file = new File("./src/main/resources/twentytwentyone/day4/input.txt");
+        GiantSquid giantSquid = new GiantSquid(file);
 
-        System.out.println(binaryDiagnostic.calculateOxygenGeneratorAndCO2ScrubberRatings());
+        System.out.println(giantSquid.lastBoardToBingo());
     }
 
 }

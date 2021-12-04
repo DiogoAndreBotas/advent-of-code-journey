@@ -1,22 +1,18 @@
 package twentytwentyone.day3;
 
 import exception.FileExtensionNotSupportedException;
-import exception.InvalidCommandException;
 import helper.TextFileParser;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class BinaryDiagnostic {
     private List<String> binaryDiagnostics;
-    private final Logger logger = Logger.getLogger("2021 - Day 2 - Dive");
+    private final Logger logger = Logger.getLogger("2021 - Day 3 - BinaryDiagnostic");
 
     public BinaryDiagnostic(File file) {
         try {
