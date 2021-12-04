@@ -12,7 +12,7 @@ public class RunInput {
         File file = new File("./src/main/resources/twentytwentyone/day3/input.txt");
         BinaryDiagnostic binaryDiagnostic = new BinaryDiagnostic(file);
 
-        System.out.println(binaryDiagnostic.calculatePowerConsumption());
+        System.out.println(binaryDiagnostic.calculateOxygenGeneratorAndCO2ScrubberRatings());
     }
 
 }
